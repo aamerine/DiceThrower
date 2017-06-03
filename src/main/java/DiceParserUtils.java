@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
  */
 public class DiceParserUtils {
     public static DiceParserResult parseDiceString(String diceString){
-        Pattern pattern = Pattern.compile("([1-9]\\d*)?(d[1-9]\\d*)?");
+        Pattern pattern = Pattern.compile("([1-9]\\d*)?(d[1-9]\\d*)?", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(diceString);
         if(matcher.matches()){
             DiceParserResult dpr = new DiceParserResult();
