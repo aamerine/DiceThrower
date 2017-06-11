@@ -15,7 +15,6 @@ public class Dice {
         DiceParserResult dpr = DiceParserUtils.parseDiceString(diceString);
         if(dpr != null){
             if(dpr.die != null){
-                System.out.println("Adding: "+dpr.number+dpr.die.getType());
                 this.dice.put(dpr.die, dpr.number);
             }
         }
@@ -24,9 +23,11 @@ public class Dice {
     public Integer throwDice(){
         Integer total = 0;
         for(Die d : this.dice.keySet()){
+            System.out.println("Rolling "+this.dice.get(d)+"d"+d.getNumberOfSides()+d.getModifierStr());
             for(int ii = 1; ii <= this.dice.get(d); ++ii){
                 total += d.roll();
             }
+            total += d.getModifier();
         }
         return total;
     }
